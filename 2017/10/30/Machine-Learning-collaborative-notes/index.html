@@ -1,0 +1,1235 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/memo/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/memo/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="CS,notes,ML," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/memo/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="1粗體: 重要or有疑慮 reference(前人)final共筆(上課沒什麼錄用的筆記和一點小考題目)Ch2 - Reltaional modalpreview test Q: Please explain the reason that relational model can nicely fit the requirement of “Concurrent Access” for DBMS">
+<meta name="keywords" content="CS,notes,ML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning (collaborative notes)">
+<meta property="og:url" content="https://garnixvai.github.io/memo/2017/10/30/Machine-Learning-collaborative-notes/index.html">
+<meta property="og:site_name" content="Garnix Memo">
+<meta property="og:description" content="1粗體: 重要or有疑慮 reference(前人)final共筆(上課沒什麼錄用的筆記和一點小考題目)Ch2 - Reltaional modalpreview test Q: Please explain the reason that relational model can nicely fit the requirement of “Concurrent Access” for DBMS">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-10-30T03:26:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine Learning (collaborative notes)">
+<meta name="twitter:description" content="1粗體: 重要or有疑慮 reference(前人)final共筆(上課沒什麼錄用的筆記和一點小考題目)Ch2 - Reltaional modalpreview test Q: Please explain the reason that relational model can nicely fit the requirement of “Concurrent Access” for DBMS">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> Machine Learning (collaborative notes) | Garnix Memo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en,zh-tw,default">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/memo/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Garnix Memo</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/memo/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/memo/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/memo/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/memo/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/memo/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            About
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Machine Learning (collaborative notes)
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2017-10-30T03:25:38+00:00" content="2017-10-30">
+            2017-10-30
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/memo/categories/computer-science/" itemprop="url" rel="index">
+                  <span itemprop="name">computer science</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">粗體: 重要or有疑慮</div></pre></td></tr></table></figure>
+<h4 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h4><h6 id="前人-final共筆"><a href="#前人-final共筆" class="headerlink" title="(前人)final共筆"></a><a href="https://docs.google.com/document/d/12Cdl6wq1mkIGAe1Wh8whhIuy1ucFMHB3XA6ubMoYrTA/edit" target="_blank" rel="external">(前人)final共筆</a></h6><h6 id="上課沒什麼錄用的筆記和一點小考題目"><a href="#上課沒什麼錄用的筆記和一點小考題目" class="headerlink" title="(上課沒什麼錄用的筆記和一點小考題目)"></a><a href="https://hackmd.io/MYExCMBYEYE5gLSQKwgBxIKbAMwLdCAGYIBsasm48kAhpQAxA===" target="_blank" rel="external">(上課沒什麼錄用的筆記和一點小考題目)</a></h6><h2 id="Ch2-Reltaional-modal"><a href="#Ch2-Reltaional-modal" class="headerlink" title="Ch2 - Reltaional modal"></a>Ch2 - Reltaional modal</h2><h4 id="preview-test"><a href="#preview-test" class="headerlink" title="preview test"></a>preview test</h4><ul>
+<li>Q: Please explain the reason that relational model can nicely fit the requirement of “Concurrent Access” for DBMS.</li>
+<li>Q: Describe the importance of “Referential Integrity Constraints”</li>
+<li>Q: Give an example to illustrate a data schema violating 3rd normal form might cause certain update anomalies</li>
+</ul>
+<h4 id="Data-Models"><a href="#Data-Models" class="headerlink" title="Data Models"></a>Data Models</h4><ul>
+<li>主概念<ul>
+<li>a collection of tables, termed relations( each with a unique name.)</li>
+<li>a relation: tables with rows and columns</li>
+<li>每個relation都有schema(for rows and columns)</li>
+<li>mathematical concept: sets</li>
+</ul>
+</li>
+<li>名詞連結<ul>
+<li>column,  –&gt; attribute</li>
+<li>value,  correspond to an attribute or a field</li>
+<li>row(tuple/ record), –&gt; a collection of related values</li>
+</ul>
+</li>
+<li>數學關係 part1 (domain)<ul>
+<li>a relation(table) : a subset of domain</li>
+<li>a relation with attributes (A1:D1, A2:D2, …, An:Dn)–&gt; Domain: D1 X D2 X…Dn</li>
+<li>Example(p.11)</li>
+</ul>
+</li>
+<li>數學關係 part2 (database)<ul>
+<li>Database schema<ul>
+<li>logical design</li>
+</ul>
+</li>
+<li>Database instance<ul>
+<li>a set of memory structures that manage database files.</li>
+<li><em><strong>The data in the database at a given instant in time(what does this mean??)</strong></em> 在那當下資料庫裡的資料？</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>表示方法<ul>
+<li>binary search tree<ul>
+<li>based on primary key</li>
+</ul>
+</li>
+<li>array ( vector)<ul>
+<li>primary key as array index</li>
+</ul>
+</li>
+<li>hash table<ul>
+<li>hash primary key</li>
+</ul>
+</li>
+<li>linked list<ul>
+<li>tuples</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>創立relation<ul>
+<li>等同於創建table<ul>
+<li>SQL CREATE TABLE table_name (A1 D1, A2 D2, …, An Dn);</li>
+<li>A: attribute name</li>
+<li>D: domain data type</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>relation 特色<ul>
+<li>tuples be ordered<ul>
+<li>Attribute:value =  R(A1, A2, …, An):t<v1, v2...=""> (oredered)</v1,></li>
+</ul>
+</li>
+<li>all values atomic(indivisible) </li>
+</ul>
+</li>
+</ul>
+<h4 id="Relational-Integrity-Constraints"><a href="#Relational-Integrity-Constraints" class="headerlink" title="Relational Integrity Constraints"></a>Relational Integrity Constraints</h4><ul>
+<li>種類<ul>
+<li>Domain constraints.<ul>
+<li>每個value都該為那attr設定的單元值 </li>
+<li>EX:若為Interger就不該出現小數</li>
+</ul>
+</li>
+<li>Key constraints<ul>
+<li>每個relation(table)中的tuples值都該為唯一</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>實體完整性限制( Entity Integrity Constraints) <ul>
+<li>Primary key can’t be null</li>
+<li>t[PK] not null for any tuple t in r( R )  P18</li>
+</ul>
+</li>
+<li><p>探討</p>
+<ul>
+<li>多個attribute name 可為相同concept ，也可為不同 concept</li>
+</ul>
+</li>
+<li><p><strong>參考完整性限制(Referential Integrity Constraints)</strong></p>
+<ul>
+<li>關聯模式裡最重要的一種限制</li>
+<li>序列值裡的foreign key，可以是Null</li>
+<li>序列值裡的foreign key若非Null，則該值必須存在於其所參考的關聯之主鍵值裡。</li>
+<li>維繫不同relation中的tuples的關鍵</li>
+</ul>
+</li>
+<li>他種限制 :語意完整限制(Semantic integrity constraint) <ul>
+<li>取決於應用層P22</li>
+</ul>
+</li>
+</ul>
+<h4 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h4><ul>
+<li>導論<ul>
+<li>attr of diff entities 不應用同樣的relation 表示</li>
+<li>只有foreign key 該被指向其他entities</li>
+<li><strong>entity 和 relationship attr 應要區分清楚</strong> </li>
+<li>不當的attr和 entity設計可能造成問題<ul>
+<li>浪費儲存空間</li>
+<li>在進行資料庫動昨時造成異常(Anomalies)</li>
+</ul>
+</li>
+<li>異常<ul>
+<li>Insert</li>
+<li>Delete </li>
+<li>Modify (P27)</li>
+</ul>
+</li>
+<li>設計schema時避免往後容易出現的異常</li>
+<li>設計時盡量避免 tuples 出現null值(null的三大可能性: invalid、unkown(but exist), unavailable)</li>
+<li>Lossless join condition: <a href="http://www.cs.sfu.ca/CourseCentral/354/zaiane/material/notes/Chapter7/node7.html" target="_blank" rel="external">名詞解釋</a>,    <a href="https://en.wikipedia.org/wiki/Lossless-Join_Decomposition" target="_blank" rel="external">Wiki</a><ul>
+<li>Ex: R(A,B,C,D)<br>FD: F={A-&gt;B, B-&gt;C, C-&gt;D}<br>R1(A,D), R2(B,D), R3(C,D) : not lossless<br>R1(A,B), R2(A,C), R3(A,D)        : lossless</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Functional dependencies</p>
+<ul>
+<li>判斷資料庫設計好壞的方法<ul>
+<li>X–&gt;Y </li>
+<li>if t1[X] = t2[X], then t1[Y] = t2[Y]</li>
+<li><strong>X–&gt; Y in R : 代表所有r( R ) 都具有該項限制</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Inference Rules</p>
+<ul>
+<li>Armstrong’s inference rules:<ul>
+<li>Reflexive: Y subset of X then X–&gt; Y</li>
+<li>Augmentation: X–&gt; Y, then XZ–&gt;YZ</li>
+<li>Transitive: X–&gt;Y</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Equivalence of Sets of FDs</strong>(P.33 done later)</li>
+</ul>
+<ul>
+<li>Normalization of Relations<ul>
+<li>break attr into smaller relations</li>
+<li></li>
+</ul>
+</li>
+<li>Normal Form <a href="http://140.118.9.79/UML-SASD/%E6%AD%A3%E8%A6%8F%E5%8C%96.pdf" target="_blank" rel="external">ref</a><ul>
+<li>4 forms: use keys and FD to identify</li>
+<li>Targets: high quality design and properties</li>
+<li>Problems: some are hard to understand/detect</li>
+<li><strong>Denormalization:</strong></li>
+</ul>
+</li>
+<li>First Normal Form<ul>
+<li>having PK, 欄位相依</li>
+<li>每個欄位只能有單一值(不可重複、多個)</li>
+<li>不允許意義相同的多個欄位 </li>
+</ul>
+</li>
+<li>Second Normal Form<ul>
+<li>符合1NF</li>
+<li>各欄位與PK間不存在部分相依的關係<ul>
+<li>分割『欄位一在重複』的欄位 分割『欄位一在重複』的欄位</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>3 NF<ul>
+<li>符合2NF</li>
+<li>除去間接相依的關係<ul>
+<li>分割『與主鍵無關』的欄位 分割『與主鍵無關』的欄位</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BCNF(老師上課時說這個不太重要，所以我不多做XDDDDD)</li>
+<li>4NF<ul>
+<li>符合3NF</li>
+<li>概念不同的元素完全分開</li>
+</ul>
+</li>
+<li><p>5NF</p>
+<ul>
+<li>符合4NF</li>
+<li>分割至最小的可能<h2 id="Ch3-SQL"><a href="#Ch3-SQL" class="headerlink" title="Ch3 - SQL"></a>Ch3 - SQL</h2></li>
+</ul>
+</li>
+<li><p>Q: Indicate the parts in SQL having the following characteristics<br>  1) Loop<br>  2) Condition</p>
+</li>
+</ul>
+<h2 id="Ch4-Relational-Algebra"><a href="#Ch4-Relational-Algebra" class="headerlink" title="Ch4 - Relational Algebra"></a>Ch4 - Relational Algebra</h2><h2 id="Ch5-Storage-and-Indexing-Handout"><a href="#Ch5-Storage-and-Indexing-Handout" class="headerlink" title="Ch5 Storage and Indexing Handout"></a>Ch5 Storage and Indexing Handout</h2><ul>
+<li><p>Q: Use examples to describe the advantages/disadvantages of creating an index in<br>DBMS</p>
+</li>
+<li><p>Record id(Rid), 可用 indexes 快速找</p>
+</li>
+<li>Buffer Manager, 把 disk page read 進 main memory</li>
+<li>Index Classification<ul>
+<li>Search key 含有 primary index -&gt; primary index, 其餘 secondary index</li>
+<li>Unique index -&gt; 含有 candidate key (candidate key是啥?)</li>
+<li>Data entry(index的部分) Data Record(真實的資料)</li>
+<li>Clustered index, Data entry &amp; Data Record排序相同or相近</li>
+<li>頂多只能用一個search key做clustered index</li>
+</ul>
+</li>
+<li>Order m Btree<ul>
+<li>node最多m個children</li>
+<li>node最少$\lceil m/2 \rceil$個children</li>
+<li>insert, delete<ul>
+<li><a href="https://hackmd.io/CwdgzAbAphDGYFoCGBOAHI4UBGIFoEYCAGfMA4YgJiWJFmIFYg==" target="_blank" rel="external">https://hackmd.io/CwdgzAbAphDGYFoCGBOAHI4UBGIFoEYCAGfMA4YgJiWJFmIFYg==</a></li>
+<li>講義</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Hashing m buckets</p>
+<ul>
+<li>depth，bucket數量總共有$2^d$個，d為depth(hash過後的數字會比d還多位，但只用後面數來d位做bucket的編號)</li>
+<li>Collision<ul>
+<li>insert新進資料的bucket已滿</li>
+</ul>
+</li>
+<li>靜態hashing的缺點<ul>
+<li>固定的m個bucket不好，資料庫可能有增減</li>
+<li>有序性的access效率不佳</li>
+</ul>
+</li>
+<li>Overflow的處理<ul>
+<li>overflow page(頭痛醫頭，腳痛醫腳，發生問題才解決)</li>
+<li>double the size of buckets(不太可能，硬體限制page大小固定)</li>
+<li>double the number of buckets and reorganize(reorganize 全部很貴，reorganize一個就OK，所以產生extendible hashing)</li>
+</ul>
+</li>
+<li>Extendible hashing<ul>
+<li>Double bucket when collision, 但只reorganize overflow的那個</li>
+</ul>
+</li>
+<li>Linear hashing</li>
+</ul>
+</li>
+<li><p>選擇index時，考慮後果。query變快，update變慢，占用disk.</p>
+</li>
+<li>Range query -&gt; tree</li>
+<li>Exact match -&gt; hash (==)</li>
+<li>Raid<ul>
+<li>Redundant Arrays of Inexpensive Disks</li>
+</ul>
+</li>
+</ul>
+<h2 id="Ch6-Query-Evaluation-Handout"><a href="#Ch6-Query-Evaluation-Handout" class="headerlink" title="Ch6 Query Evaluation Handout"></a>Ch6 Query Evaluation Handout</h2><ul>
+<li>Catalog<ul>
+<li>存有關table的相關資料</li>
+</ul>
+</li>
+<li>Complex Selections ???</li>
+<li>Access Paths<ul>
+<li>Retreive tuple的方法</li>
+<li>Most selective access path</li>
+<li><ol>
+<li>找出最少pageIO的where限制</li>
+</ol>
+</li>
+<li><ol>
+<li>用他篩出資料</li>
+</ol>
+</li>
+<li><ol>
+<li>對於那些資料apply其他沒用到的限制</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Cost = 找到要得資料 + 把那些資料從disk抓回來(通常貴)<ul>
+<li>情況:Range search，想找a&lt;值&lt;b</li>
+<li>clustered的情況下，資料聚集，可能集中在某幾個page</li>
+<li>相較於unclustered分散於各個不同的physical page,要找更多的page。</li>
+</ul>
+</li>
+<li>Projection<ul>
+<li>取某些column的value而且distinct<ul>
+<li>方法1. sorting, sort完把重複的移掉</li>
+<li>方法2. hashing, </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Join ??</li>
+<li><p>Multi-Operator Queries ??</p>
+</li>
+<li><p>Transaction</p>
+<ul>
+<li>Atomic的動作</li>
+</ul>
+</li>
+<li>ACID<ul>
+<li>Atomicity 要馬全部執行 要馬都不執行 不能執行一半</li>
+<li>Consistency, transition consistant, DB 是在 consistant state, 結果會是consistent</li>
+<li>Isolation, transition 之間無相關性</li>
+<li>Durability, transition執行了就永久有效</li>
+</ul>
+</li>
+<li>Concurrency Control<ul>
+<li>Scheduling Transactions<ul>
+<li>Serial schedule, transaction之間不交叉</li>
+<li>Equivalent schedules, 誰先執行都一樣的</li>
+<li>Serializable schedule, 一個具有n筆交易的排程為可序列化排程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Lock-Based Concurrency Control</p>
+<ul>
+<li>Strict Two-phase Locking(Read Write lock)</li>
+</ul>
+</li>
+<li><p>Log</p>
+<ul>
+<li>Ensuring Atomicity<ul>
+<li>log, 在make change之前</li>
+</ul>
+</li>
+<li>Avoid cascading aborts(一個transaction abort, 其他基於他的transaction也要abort)<ul>
+<li>release lock only at commit time, 確定後才能用他的值，避免一連串abort</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Recovery<ul>
+<li>Analysis</li>
+<li>Redo</li>
+<li>Undo</li>
+</ul>
+</li>
+</ul>
+<h2 id="Ch7-ER-Model-Handout"><a href="#Ch7-ER-Model-Handout" class="headerlink" title="Ch7  ER Model Handout"></a>Ch7  ER Model Handout</h2><ul>
+<li>基礎觀念<ul>
+<li>以物件組成的系統</li>
+<li>物件之間的關係</li>
+</ul>
+</li>
+<li>Attribute Types<ul>
+<li>Composite(上下組成關係) vs. Simple(單一單位) </li>
+<li>多值 vs 單一值</li>
+<li>可衍生(derived)　vs Stored(??What)</li>
+<li>Null </li>
+</ul>
+</li>
+<li>E-R: Relational sets <ul>
+<li>Relationship: 連結兩個以上的entity</li>
+<li>Relationship set: 多個relation<ul>
+<li>relationship set : 菱形(動詞/介係詞)</li>
+<li>entity: 長方形(名詞)</li>
+<li>attr: 橢圓形(包含的性質/特性(名詞))</li>
+</ul>
+</li>
+<li>一個entity可扮演多種角色</li>
+</ul>
+</li>
+<li>Mapping Cardinalities<ul>
+<li>1:1–&gt;man marry womam</li>
+<li>N:1–&gt;children have a mom</li>
+<li>1:N–&gt;mother have children</li>
+<li>M:N–&gt;student enroll classes</li>
+</ul>
+</li>
+<li>Key<ul>
+<li>讓entity 和 relationship更加特性分明(=3=)</li>
+<li>Superkey: identify entity(但可由多個PK組成)</li>
+<li>Candidate key: 較小的superkey(?)<ul>
+<li>Can be any column or a combination of columns that can qualify as unique key . </li>
+<li>Can be multiple in one table.</li>
+<li>Each Candidate Key can qualify as Primary Key.</li>
+</ul>
+</li>
+<li>Primary key : identify entity</li>
+</ul>
+</li>
+<li>Entity<ul>
+<li>Weak Entity: 沒有能成為PK的attr<ul>
+<li>必須依靠其他entity才能存在</li>
+<li>例如1:N的關係</li>
+</ul>
+</li>
+<li>Strong Entity: 有PK </li>
+<li><strong>High-leval Entity</strong>: 非常好用，用來連結多個系統、過渡元素的超強模組(自我解釋)</li>
+</ul>
+</li>
+</ul>
+<h5 id="Enhancement"><a href="#Enhancement" class="headerlink" title="Enhancement"></a>Enhancement</h5><ul>
+<li>Motivation<ul>
+<li>useful for trditional but no the latest<ul>
+<li>more request</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>EER Model Concepts(我記得老師說不會考，然而最到一半才想到……↓)<ul>
+<li>all ER concepts included </li>
+<li>plus <ul>
+<li>subclasses/cuperclasses</li>
+<li>specialization/generalization</li>
+<li>categories</li>
+<li>attribute inheritance</li>
+</ul>
+</li>
+<li>Key idea<ul>
+<li>Generalization<ul>
+<li>強調entity的共同性 而產生的high-leval entity(superclass)</li>
+</ul>
+</li>
+<li>Specialization<ul>
+<li>來強調entity的差異性</li>
+<li>Generalization 相反</li>
+<li>讓每個subclass 都有additional specific attr </li>
+<li>建立subclass與其他entity sets間的特殊關係</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/memo/tags/CS/" rel="tag">#CS</a>
+          
+            <a href="/memo/tags/notes/" rel="tag">#notes</a>
+          
+            <a href="/memo/tags/ML/" rel="tag">#ML</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/memo/2017/10/30/Neo4j/" rel="prev">Neo4j</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/memo/2017/10/30/Still-Alice-1/" rel="next">Still Alice (1)</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff;
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        // background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/memo/images/default_avatar.jpg" alt="Ju Huang Hua" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Ju Huang Hua</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/memo/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/memo/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/memo/tags">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+           
+           <div class="site-state-item">
+              
+                <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+                <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+                <div class="widget-wrap">
+                    <h3 class="widget-title">Tag Cloud</h3>
+                    <div id="myCanvasContainer" class="widget tagcloud">
+                        <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/B-tree/">B-tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/British/">British</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/CS/">CS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/ML/">ML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/aceademic-paper/">aceademic paper</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/angular/">angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/book/">book</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/database/">database</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/disease/">disease</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/entertainment/">entertainment</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/general/">general</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/graph/">graph</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/history/">history</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/homework/">homework</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/introduction/">introduction</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/method/">method</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/movies/">movies</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/notes/">notes</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/project/">project</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/reference/">reference</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/report/">report</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/schedule/">schedule</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/test/">test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/travel/">travel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/tutorial/">tutorial</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/memo/tags/visualization/">visualization</a><span class="tag-list-count">1</span></li></ul>
+                        </canvas>
+                    </div>
+              </div>
+              
+           </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#reference"><span class="nav-number">1.</span> <span class="nav-text">reference</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#前人-final共筆"><span class="nav-number">1.0.1.</span> <span class="nav-text">(前人)final共筆</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#上課沒什麼錄用的筆記和一點小考題目"><span class="nav-number">1.0.2.</span> <span class="nav-text">(上課沒什麼錄用的筆記和一點小考題目)</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch2-Reltaional-modal"><span class="nav-number"></span> <span class="nav-text">Ch2 - Reltaional modal</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#preview-test"><span class="nav-number">1.</span> <span class="nav-text">preview test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-Models"><span class="nav-number">2.</span> <span class="nav-text">Data Models</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Relational-Integrity-Constraints"><span class="nav-number">3.</span> <span class="nav-text">Relational Integrity Constraints</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Normalization"><span class="nav-number">4.</span> <span class="nav-text">Normalization</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch3-SQL"><span class="nav-number"></span> <span class="nav-text">Ch3 - SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch4-Relational-Algebra"><span class="nav-number"></span> <span class="nav-text">Ch4 - Relational Algebra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch5-Storage-and-Indexing-Handout"><span class="nav-number"></span> <span class="nav-text">Ch5 Storage and Indexing Handout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch6-Query-Evaluation-Handout"><span class="nav-number"></span> <span class="nav-text">Ch6 Query Evaluation Handout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch7-ER-Model-Handout"><span class="nav-number"></span> <span class="nav-text">Ch7  ER Model Handout</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Enhancement"><span class="nav-number">0.1.</span> <span class="nav-text">Enhancement</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2017
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ju Huang Hua
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/memo/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/memo/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/memo/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/memo/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/memo/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/memo/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/memo/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/memo/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/memo/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/memo/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/memo/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/memo/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
